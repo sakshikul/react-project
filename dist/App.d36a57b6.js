@@ -31743,7 +31743,7 @@ module.exports = function bind(fn, thisArg) {
   };
 };
 
-},{}],"../node_modules/axios/node_modules/is-buffer/index.js":[function(require,module,exports) {
+},{}],"../node_modules/is-buffer/index.js":[function(require,module,exports) {
 /*!
  * Determine if an object is a Buffer
  *
@@ -32058,7 +32058,7 @@ module.exports = {
   trim: trim
 };
 
-},{"./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","is-buffer":"../node_modules/axios/node_modules/is-buffer/index.js"}],"../node_modules/axios/lib/helpers/normalizeHeaderName.js":[function(require,module,exports) {
+},{"./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","is-buffer":"../node_modules/is-buffer/index.js"}],"../node_modules/axios/lib/helpers/normalizeHeaderName.js":[function(require,module,exports) {
 'use strict';
 
 var utils = require('../utils');
@@ -33426,11 +33426,11 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useDropdown = function useDropdown(label, defaultValue, options) {
-  var _useState = (0, _react.useState)(defaultValue),
+var useDropdown = function useDropdown(label, defaultState, options) {
+  var _useState = (0, _react.useState)(defaultState),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
-      setState = _useState2[1];
+      updateState = _useState2[1];
 
   var id = "use-dropdown-".concat(label.replace(" ", "").toLowerCase());
 
@@ -33441,13 +33441,13 @@ var useDropdown = function useDropdown(label, defaultValue, options) {
       id: id,
       value: state,
       onChange: function onChange(e) {
-        return setState(e.target.value);
+        return updateState(e.target.value);
       },
       onBlur: function onBlur(e) {
-        return setState(e.target.value);
+        return updateState(e.target.value);
       },
-      disabled: options.length === 0
-    }, _react.default.createElement("option", null, "All"), options.map(function (item) {
+      disabled: !options.length
+    }, _react.default.createElement("option", null), options.map(function (item) {
       return _react.default.createElement("option", {
         key: item,
         value: item
@@ -33455,7 +33455,7 @@ var useDropdown = function useDropdown(label, defaultValue, options) {
     })));
   };
 
-  return [state, Dropdown, setState];
+  return [state, Dropdown, updateState];
 };
 
 var _default = useDropdown;
@@ -33497,31 +33497,37 @@ var SearchParams = function SearchParams() {
   var _useState3 = (0, _react.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
       breeds = _useState4[0],
-      setBreeds = _useState4[1];
+      updateBreeds = _useState4[1];
 
   var _useDropdown = (0, _useDropdown5.default)("Animal", "dog", _pet.ANIMALS),
       _useDropdown2 = _slicedToArray(_useDropdown, 2),
       animal = _useDropdown2[0],
       AnimalDropdown = _useDropdown2[1];
 
-  var _useDropdown3 = (0, _useDropdown5.default)("Breed", " ", breeds),
+  var _useDropdown3 = (0, _useDropdown5.default)("Breed", "", breeds),
       _useDropdown4 = _slicedToArray(_useDropdown3, 3),
       breed = _useDropdown4[0],
       BreedDropdown = _useDropdown4[1],
-      setBreed = _useDropdown4[2];
+      updateBreed = _useDropdown4[2];
 
   (0, _react.useEffect)(function () {
+<<<<<<< HEAD
     // setBreeds = [];
     // setBreed = "";
+=======
+    updateBreeds([]);
+    updateBreed("");
+
+>>>>>>> d8bf9dc836e8072cf44f0d405a52f8961879eff2
     _pet.default.breeds(animal).then(function (_ref) {
-      var breeds = _ref.breeds;
-      var breedStrings = breeds.map(function (_ref2) {
+      var breedsapi = _ref.breeds;
+      var breedStrings = breedsapi.map(function (_ref2) {
         var name = _ref2.name;
         return name;
       });
-      setBreeds(breedStrings);
+      updateBreeds(breedStrings);
     }, console.error);
-  });
+  }, [animal]);
   return _react.default.createElement("div", {
     className: "search-params"
   }, _react.default.createElement("form", null, _react.default.createElement("label", {
@@ -33587,7 +33593,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "39545" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41725" + '/');
+>>>>>>> d8bf9dc836e8072cf44f0d405a52f8961879eff2
 
   ws.onmessage = function (event) {
     checkedAssets = {};
