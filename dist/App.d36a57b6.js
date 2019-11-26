@@ -33488,8 +33488,6 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 var SearchParams = function SearchParams() {
   var _useState = (0, _react.useState)("Seattle, WA"),
       _useState2 = _slicedToArray(_useState, 2),
@@ -33513,9 +33511,8 @@ var SearchParams = function SearchParams() {
       setBreed = _useDropdown4[2];
 
   (0, _react.useEffect)(function () {
-    setBreeds = (_readOnlyError("setBreeds"), []);
-    setBreed = (_readOnlyError("setBreed"), "");
-
+    // setBreeds = [];
+    // setBreed = "";
     _pet.default.breeds(animal).then(function (_ref) {
       var breeds = _ref.breeds;
       var breedStrings = breeds.map(function (_ref2) {
@@ -33590,7 +33587,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36933" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39545" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
