@@ -26,7 +26,7 @@ async function requestPets() {
 useEffect(() => {
     updateBreeds([]);
     updateBreed("");
-    pet.breeds(animal).then(({ breeds : breedsapi}) => {
+    pet.breeds(animal).then(({ breeds: breedsapi }) => {
       const breedStrings = breedsapi.map(({ name }) => name);
       updateBreeds(breedStrings);
     }, console.error);
